@@ -279,6 +279,9 @@ set /p "userInput=Enter Authorization Code: "
 :: Use PowerShell to fetch URL content and set it to a variable
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/win').Content"') do set "urlResponse=%%A"
 
+:: Print the URL response for debugging
+echo URL Response: %urlResponse%
+
 :: /I for case-insensitive check
 if /I "%userInput%"=="%urlResponse%" (
     goto :HWIDActivation
