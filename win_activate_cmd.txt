@@ -280,7 +280,7 @@ set /p "userInput=Enter Authorization Code: "
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/win').Content"') do set "urlResponse=%%A"
 
 :: Print the URL response for debugging
-echo URL Response: %urlResponse%
+::echo URL Response: %urlResponse%
 
 :: /I for case-insensitive check
 if /I "%userInput%"=="%urlResponse%" (
