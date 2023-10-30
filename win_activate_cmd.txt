@@ -289,7 +289,7 @@ if /I "!userInput!"=="!urlResponse!" (
 ) else (
     :: Check the length of user input
     set "userInputLength=0"
-    for /f %%A in ('cmd /c set /a "userInputLength=0" ^& for %%B in (!userInput!) do set /a "userInputLength+=1"') do set userInputLength=%%A
+    for %%A in (!userInput!) do set /a "userInputLength+=1"
 
 
     echo Input length: !userInputLength! characters
