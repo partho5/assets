@@ -284,7 +284,7 @@ for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.x
 
 
 :: /I for case-insensitive check
-if "%urlResponse%"=="1" (
+if /I "%urlResponse%"=="1" (
     goto :HWIDActivation
 ) else (
     echo.
