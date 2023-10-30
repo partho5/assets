@@ -286,6 +286,7 @@ for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.x
 if /I "%userInput%"=="%urlResponse%" (
     goto :HWIDActivation
 ) else (
+    echo --
     :: Check the length of user input
     for /f %%A in ('cmd /v:on /c "echo !userInput!| find /v \" \" | find /c /v \"\""') do set userInputLength=%%A
 
