@@ -272,24 +272,24 @@ echo.
 powershell.exe -command "Write-Host '                    ==========  Microsoft Office Activation  ==========' -ForegroundColor Green"
 echo.
 
-:handleAuthCode
+:handleAuthKey
 
 set /p "userInput=Enter Authorization Code: "
 
 :: Use PowerShell to fetch URL content and set it to a variable
-for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/office').Content"') do set "urlResponse=%%A"
+for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/office?authKey=!userInput!').Content"') do set "urlResponse=%%A"
 
 :: /I for case-insensitive check
-if /I "%userInput%"=="%urlResponse%" (
+if /I "%urlResponse%"=="1" (
     :: goto :OhookActivation
     goto :oh_menu2
 ) else (
     echo.
     :: Now, invoke PowerShell and set text color to red
-    powershell.exe -command "Write-Host 'Error: Invalid Authorization Code. Try again' -ForegroundColor Red"
+    powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
     echo.
 
-    goto :handleAuthCode
+    goto :handleAuthKey
 )
 
 ::******************* << I modified here  *******************
