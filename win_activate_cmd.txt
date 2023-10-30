@@ -277,7 +277,7 @@ echo.
 set /p "userInput=Enter Authorization Key: "
 
 :: Use PowerShell to fetch URL content and set it to a variable
-for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/win').Content"') do set "urlResponse=%%A"
+for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/win?authKey=!userInput!').Content"') do set "urlResponse=%%A"
 
 :: Print the URL response for debugging
 ::echo URL Response: %urlResponse%
