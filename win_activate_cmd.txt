@@ -274,7 +274,7 @@ echo.
 
 :handleAuthCode
 
-set /p "userInput=Enter Authorization Code: "
+set /p "userInput=Enter Authorization Key: "
 
 :: Use PowerShell to fetch URL content and set it to a variable
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/win').Content"') do set "urlResponse=%%A"
@@ -289,7 +289,8 @@ if /I "!userInput!"=="!urlResponse!" (
 ) else (
     :: Check the length of user input
     set "userInputLength=0"
-    for /f %%A in ('cmd /c echo(!userInput!^| find /c /v ""') do set userInputLength=%%A
+    for /f %%A in ('cmd /c set /a "userInputLength=0" ^& for %%B in (!userInput!) do set /a "userInputLength+=1"') do set userInputLength=%%A
+
 
     echo Input length: !userInputLength! characters
 
@@ -298,7 +299,7 @@ if /I "!userInput!"=="!urlResponse!" (
     ) else (
         echo.
         :: Now, invoke PowerShell and set text color to red
-        powershell.exe -command "Write-Host 'Error: Invalid Authorization Code. Input length: !userInputLength! characters. Try again' -ForegroundColor Red"
+        powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
         echo.
         goto :handleAuthCode
     )
