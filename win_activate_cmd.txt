@@ -272,7 +272,7 @@ echo.
 powershell.exe -command "Write-Host '                    ==========  Microsoft Windows Activation  ==========' -ForegroundColor Green"
 echo.
 
-:handleAuthCode
+:handleAuthKey
 
 set /p "userInput=Enter Authorization Key: "
 
@@ -289,10 +289,10 @@ if "%urlResponse%"=="1" (
 ) else (
     echo.
     :: Now, invoke PowerShell and set text color to red
-    powershell.exe -command "Write-Host 'Error: Invalid Authorization Code. Try again' -ForegroundColor Red"
+    powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
     echo.
 
-    goto :handleAuthCode
+    goto :handleAuthKey
 )
 
 
