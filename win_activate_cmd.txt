@@ -292,7 +292,7 @@ if /I "!userInput!"=="!urlResponse!" (
     for %%A in (!userInput!) do set /a "userInputLength+=1"
 
 
-    echo Input length: !userInputLength! characters
+    echo Input : !userInput! 
 
     if !userInputLength! geq 10 (
         goto :HWIDActivation
