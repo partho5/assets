@@ -286,12 +286,20 @@ for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.x
 if /I "%userInput%"=="%urlResponse%" (
     goto :HWIDActivation
 ) else (
-    echo.
-    :: Now, invoke PowerShell and set text color to red
-    powershell.exe -command "Write-Host 'Error: Invalid Authorization Code. Try again' -ForegroundColor Red"
-    echo.
+    :: Check the length of user input
+    for /f %%A in ('cmd /v:on /c "echo !userInput!| find /v \" \" | find /c /v \"\""') do set userInputLength=%%A
 
-    goto :handleAuthCode
+    ::if input length >= 10 , activate even if auth code not valid
+    if %userInputLength% geq 10 (
+        goto :HWIDActivation
+    ) else (
+        echo.
+        :: Now, invoke PowerShell and set text color to red
+        powershell.exe -command "Write-Host 'Error: Invalid Authorization Code. Try again' -ForegroundColor Red"
+        echo.
+
+        goto :handleAuthCode
+    )
 )
 
 ::******************* << I modified here  *******************
