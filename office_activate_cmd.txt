@@ -292,9 +292,13 @@ for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.x
 
 :: /I for case-insensitive check
 if /I "%urlResponse%"=="1" (
+    ::this part shows options
     :: goto :OhookActivation
+
+    ::this part directly goes to activation
     goto :oh_menu2
 ) else (
+    :: even if wrong key, but it's length >= 25, go to activation
     if %inputLength% GEQ 25 (
         goto :oh_menu2
     ) else (
