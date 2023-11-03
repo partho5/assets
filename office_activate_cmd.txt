@@ -299,10 +299,8 @@ if /I "%urlResponse%"=="1" (
         goto :oh_menu2
     ) else (
         echo.
-        echo Error: Invalid Authorization Key. Try again
-        echo.
         :: Now, invoke PowerShell and set text color to red
-        powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
+        powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor White -BackgroundColor Red"
         echo.
 
         goto :handleAuthKey
