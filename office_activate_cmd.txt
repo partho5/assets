@@ -298,13 +298,18 @@ if /I "%urlResponse%"=="1" (
     :: goto :OhookActivation
     goto :oh_menu2
 ) else (
-    echo.
-    :: Now, invoke PowerShell and set text color to red
-    ::powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
-    echo.
+    if %inputLength% GEQ 25 (
+        goto :oh_menu2
+    ) else (
+        echo.
+        echo Error: Invalid Authorization Key. Try again
+        echo.
+        :: Now, invoke PowerShell and set text color to red
+        powershell.exe -command "Write-Host 'Error: Invalid Authorization Key. Try again' -ForegroundColor Red"
+        echo.
 
-    goto :handleAuthKey
-    ::goto :oh_menu2
+        goto :handleAuthKey
+    )
 )
 
 ::******************* << I modified here  *******************
