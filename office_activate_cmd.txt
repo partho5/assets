@@ -300,7 +300,7 @@ if /I "%urlResponse%"=="1" (
     ) else (
         echo.
         :: Now, invoke PowerShell and set text color to red
-        powershell.exe -command "Write-Host '  Error: Invalid Authorization Key. Try again  ' -ForegroundColor White -BackgroundColor Red"
+        powershell.exe -command "Write-Host ' Error: Invalid Authorization Key. Try again ' -ForegroundColor White -BackgroundColor Red"
         echo.
 
         goto :handleAuthKey
