@@ -293,8 +293,6 @@ if /I "%urlResponse%"=="1" (
     echo.
 
     goto :handleAuthKey
-
-    ::goto :HWIDActivation
 )
 
 
