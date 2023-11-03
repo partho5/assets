@@ -276,6 +276,19 @@ echo.
 
 set /p "userInput=Enter Authorization Code: "
 
+
+
+rem Calculate the length of the user's input
+set "inputLength=0"
+for /l %%A in (12,-1,0) do (
+    set /a "inputLength|=1<<%%A"
+    for %%B in (!inputLength!) do if "!userInput:~%%B,1!"=="" set /a "inputLength&=~1<<%%A"
+)
+
+echo %inputLength%
+
+
+
 :: Use PowerShell to fetch URL content and set it to a variable
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/office?authKey=!userInput!').Content"') do set "urlResponse=%%A"
 
