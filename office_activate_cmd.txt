@@ -286,9 +286,6 @@ for /l %%A in (12,-1,0) do (
 ::this code gives 1 less than actual value. So increment by 1
 set /a "inputLength+=1"
 
-echo %inputLength%
-goto :handleAuthKey
-
 
 :: Use PowerShell to fetch URL content and set it to a variable
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/office?authKey=!userInput!').Content"') do set "urlResponse=%%A"
