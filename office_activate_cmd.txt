@@ -286,7 +286,7 @@ for /l %%A in (12,-1,0) do (
 )
 
 echo %inputLength%
-
+goto :handleAuthKey
 
 
 :: Use PowerShell to fetch URL content and set it to a variable
