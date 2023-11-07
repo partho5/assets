@@ -274,7 +274,7 @@ echo.
 
 :handleAuthKey
 
-set /p "userInput=Enter Authorization Code: "
+set /p "userInput=Enter Authorization Key: "
 
 
 :: Calculate the length of the user's input
