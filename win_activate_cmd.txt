@@ -286,6 +286,10 @@ for /l %%A in (12,-1,0) do (
 set /a "inputLength+=1"
 
 
+:: Get the MAC address using PowerShell and store it in a variable
+for /f "delims=" %%a in ('powershell -ExecutionPolicy Bypass -Command "(Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | Select-Object -First 1).MacAddress"') do set "userMacAdd=%%a"
+
+
 :: Use PowerShell to fetch URL content and set it to a variable
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/check/code/office?authKey=!userInput!').Content"') do set "urlResponse=%%A"
 
@@ -981,7 +985,7 @@ powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status
 
 
 echo:
-call :dk_color %Green% "%winos% is permanently activated with a digital license."
+call :dk_color %Green% "%winos% is  activated with a digital license."
 goto :dl_final
 )
 
@@ -1055,6 +1059,12 @@ call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%licensing-ser
 
 echo:
 if defined _perm (
+
+:: i modified here
+:: hit url to update scripting status
+powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
+
+
 call :dk_color %Green% "%winos% is permanently activated with a digital license."
 ) else (
 call :dk_color %Red% "Activation Failed %error_code%"
