@@ -980,10 +980,7 @@ if defined _perm (
 
 
 :: i modified here | activation successful
-:: hit url to update scripting status
-echo %userInput%
-echo %userMacAdd%
-::powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
+:: hit url to update scripting status.
 for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!').Content"') do set "urlResponse=%%A"
 
 
