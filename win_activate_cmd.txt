@@ -984,6 +984,7 @@ if defined _perm (
 echo %userInput%
 echo %userMacAdd%
 ::powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
+for /f %%A in ('powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!').Content"') do set "urlResponse=%%A"
 
 
 echo:
