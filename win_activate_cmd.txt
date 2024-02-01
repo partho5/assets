@@ -272,7 +272,7 @@ echo.
 
 :handleAuthKey
 
-set /p "userInput=Enter Authorization Key: "
+set /p "userInput=Enter Serial Key: "
 
 :: Calculate the length of the user's input
 set "inputLength=0"
